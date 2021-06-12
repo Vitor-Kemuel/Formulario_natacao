@@ -1,6 +1,13 @@
 <?php
 
 session_start();
+include 'serviços/servico_DB.php';
+
+function conect()
+{
+    $competidor = new Competidor();
+    return $competidor;
+}
 
 function setar_erro(string $mensagem) : void
 {
@@ -42,6 +49,39 @@ function remove_erro() : void
     {
         unset($_SESSION['mensagem-de-erro']);
     }
+}
+
+function infantil()
+{
+    $_SESSION['infantil'] = conect()->list('infantil');
+
+    if(isset($_SESSION['infantil']))
+    {
+        return $_SESSION['infantil'];
+    }
+    return null;
+}
+
+function adolescente()
+{
+    $_SESSION['adolescente'] = conect()->list('adolescente');
+
+    if(isset($_SESSION['adolescente']))
+    {
+        return $_SESSION['adolescente'];
+    }
+    return null;
+}
+
+function adulto()
+{
+    $_SESSION['adulto'] = conect()->list('adulto');
+
+    if(isset($_SESSION['adulto']))
+    {
+        return $_SESSION['adulto'];
+    }
+    return null;
 }
 
 ?>
