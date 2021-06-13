@@ -1,0 +1,75 @@
+body{
+    background-color: rgb(0, 81, 95);
+    text-align: center;
+}
+
+.entrada_informacao{
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    font-weight: bold;
+    margin-left: 23%;
+    margin-right: 23%;
+    border-radius: 15px;
+    padding: 1px;
+    background-color: rgb(0, 82, 212);
+}
+
+.caixa_de_texto{
+    text-align: center;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    background-color: darkgrey;
+    border-radius: 15px;
+}
+
+.btn_enviar{
+    background-color: green;
+    border-color: rgb(0, 0, 0);
+    font-weight: bold;
+    border-radius: 15px;
+}
+
+.mensagem_de_erro{
+    font-weight: bold;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    margin-left: 23%;
+    margin-right: 23%;
+    border-radius: 15px;
+    margin: 7px;
+    background-color: red;
+}
+
+.categoria{
+    font-weight: bold;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    margin-left: 23%;
+    margin-right: 23%;
+    border-radius: 15px;
+    background-color: rgb(0, 108, 14);
+}
+
+.lista{
+    display: flex;
+    justify-content: center;
+}
+
+.tabela_classificacao{
+    background-color: darkgrey;
+}
+
+.infantil{
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.adolescente{
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.adulto{
+    margin-left: 3%;
+    margin-right: 3%;
+}

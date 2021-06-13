@@ -2,16 +2,6 @@
 
 $pdo = new PDO('mysql:host=localhost;dbname=competicao_natacao', 'root', '');
 
-// $sql = 'select * from adolescente';
-
-// $competidor_DB = [];
-
-// foreach ($pdo->query($sql) as $key => $value)
-// {
-//     array_push($competidor_DB, $value);
-//     echo $value['id'] . ' - ' . $value['nome'] . ' - '. $value['idade'].'<hr>';
-// }
-
 class Competidor
 {
     private $conexao;
