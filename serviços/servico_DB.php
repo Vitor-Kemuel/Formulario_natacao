@@ -1,7 +1,5 @@
 <?php
 
-$pdo = new PDO('mysql:host=localhost;dbname=competicao_natacao', 'root', '');
-
 class Competidor
 {
     private $conexao;
@@ -13,6 +11,35 @@ class Competidor
         } catch (Exception $e) {
             echo $e->getMessage();
             die();
+        }
+    }
+
+    public function exemple_list() : ?string
+    {
+        try
+        {
+            $sql = 'select * from exemplo_nomes where id='.rand(1, 60);
+
+            $nome = $this->conexao->query($sql);
+
+            return $nome;
+
+        }catch(Exception $e){
+            echo $e ->getMessage();
+        }finally{
+            $nomes = 'Brian Potter,Tracy Walker,Bethany Weber,Angel Flores,Anthony Patterson,'
+            .'Amanda Adams,Christopher Rose,Marcus Walker,Samantha Lopez,Angela Martin DDS,'
+            .'Natalie Madden,Keith Medina,Ian Miller,Andrew Nelson,Maria Day,Candace Guzman,'
+            .'Tracey Mullins,Stephanie Delacruz,Cheryl Sanford,Katelyn Wells';
+            $nomes = explode(',', $nomes);
+            foreach($nomes as $values){
+                $sql = 'insert into exemplo_nomes(nome) values(:nome)';
+
+                $prepare = $this->conexao->prepare($sql);
+                $prepare->bindParam(':nome', $values);
+                $prepare->execute();
+            }
+            return $nomes[rand(1, 10)];
         }
     }
 

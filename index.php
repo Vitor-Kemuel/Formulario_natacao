@@ -17,20 +17,33 @@ include "serviços/servico_mensagem_sessao.php";
 <div class="entrada_informacao">
     <h1>Formulário para inscrição de competidores</h1>
     <form action="script.php" method="post">
-        <p>Seu Nome:<br> <input class="caixa_de_texto" type="text" name="nome" /></p>
-        <p>Sua idade:<br> <input class="caixa_de_texto" type="text" name="idade" /></p>
-        <p><input class="btn_enviar" type="submit" value="Enviar dados" /></p>
-</div>
-<?php
-    $mensagem_de_erro = obter_erro();
-    if(!empty($mensagem_de_erro))
-    {?>
-        <div class="mensagem_de_erro">
         <?php
-        echo $mensagem_de_erro;
-        ?>
-        </div>
-    <?php   }  ?>
+        $mensagem_de_erro = obter_erro();
+        if(!empty($mensagem_de_erro)){
+            if(obter_complemento_erro() == 'nome'){ ?>
+                <div class="mensagem_de_erro">
+                <?php
+                echo $mensagem_de_erro;?>
+                </div>
+                <p class="texto_de_erro">Seu Nome:<br><input class="caixa_de_texto erro_dados" type="text" name="nome" placeholder="Ex. <?php $nome = exemplo(); echo $nome; ?> " /></p>
+                <p>Sua idade:<br><input class="caixa_de_texto dados_certos caixa_idade" type="text" name="idade" placeholder="Ex. <?php echo rand(6, 99); ?>" /> anos</p>
+                <?php
+            } else{    ?>
+                <p>Seu Nome:<br><input class="caixa_de_texto dados_certos" type="text" name="nome" placeholder="Ex. <?php $nome = exemplo(); echo $nome; ?>" /></p>
+                <div class="mensagem_de_erro">
+                <?php
+                echo $mensagem_de_erro;?>
+                </div>
+                <p class="texto_de_erro">Sua idade:<br><input class="caixa_de_texto erro_dados caixa_idade" type="text" name="idade" placeholder="Ex. <?php echo rand(6, 99); ?>" /> anos</p>
+            <?php
+            }
+        remove_erro();
+        }else{  ?>
+        <p>Seu Nome:<br><input class="caixa_de_texto dados_certos" class="caixa_de_texto_nome" type="text" name="nome" placeholder="Ex. <?php $nome = exemplo(); echo $nome; ?> " /></p>
+        <p>Sua idade:<br><input class="caixa_de_texto dados_certos caixa_idade"type="text" name="idade" placeholder="Ex. <?php echo rand(6, 99); ?>"/> anos</p>
+        <?php
+        }   ?>
+        <p><input class="btn_enviar" type="submit" value="Enviar dados" /></p>
 <?php
     $categoria = obter_categoria();
     if(!empty($categoria)) { ?>
@@ -39,8 +52,7 @@ include "serviços/servico_mensagem_sessao.php";
         echo $categoria;
         ?>
         </div>
-    <?php } ?>
-<br>
+    <?php } remove_categoria(); ?>
 <div class="lista">
 <?php
     $infantil = infantil();
@@ -90,6 +102,7 @@ include "serviços/servico_mensagem_sessao.php";
         </table>
     </div>
 <?php } ?>
+</div>
 </div>
 </form>
 

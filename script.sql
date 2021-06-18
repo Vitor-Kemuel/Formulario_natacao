@@ -22,3 +22,9 @@ CREATE TABLE adulto(
     idade int(2) NOT NULL,
     PRIMARY KEY(id)
 );
+
+CREATE TABLE exemplo_nomes(
+    id int(3) ZEROFILL NOT NULL AUTO_INCREMENT,
+    nome varchar(40) NOT NULL,
+    PRIMARY KEY(id)
+);

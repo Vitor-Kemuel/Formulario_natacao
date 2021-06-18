@@ -9,18 +9,22 @@ function conect()
     return $competidor;
 }
 
-function setar_erro(string $mensagem) : void
+function setar_erro(string $mensagem, string $complemento) : void
 {
-    $_SESSION['mensagem-de-erro'] = $mensagem;
+    $_SESSION['mensagem-de-erro'][0] = $mensagem;
+    $_SESSION['mensagem-de-erro'][1] = $complemento;
 }
 
 function obter_erro() : ?string
 {
     if(isset($_SESSION['mensagem-de-erro']))
     {
-        return $_SESSION['mensagem-de-erro'];
+        return $_SESSION['mensagem-de-erro'][0];
     }
     return null;
+}
+function obter_complemento_erro(){
+    return $_SESSION['mensagem-de-erro'][1];
 }
 
 function setar_categoria(string $mensagem) : void
@@ -82,6 +86,11 @@ function adulto()
         return $_SESSION['adulto'];
     }
     return null;
+}
+function exemplo() : string
+{
+    $_SESSION['nomes-exemplo'] = conect()->exemple_list();
+    return $_SESSION['nomes-exemplo'];
 }
 
 ?>
