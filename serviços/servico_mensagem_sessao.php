@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-include 'serviços/servico_DB.php';
+include 'servico_DB.php';
 
 function conect()
 {
@@ -55,38 +55,16 @@ function remove_erro() : void
     }
 }
 
-function infantil()
-{
-    $_SESSION['infantil'] = conect()->list('infantil');
+function competidor($categoria){
+    $_SESSION['competidor'] = conect()->list($categoria);
 
-    if(isset($_SESSION['infantil']))
+    if(isset($_SESSION['competidor']))
     {
-        return $_SESSION['infantil'];
+        return $_SESSION['competidor'];
     }
     return null;
 }
 
-function adolescente()
-{
-    $_SESSION['adolescente'] = conect()->list('adolescente');
-
-    if(isset($_SESSION['adolescente']))
-    {
-        return $_SESSION['adolescente'];
-    }
-    return null;
-}
-
-function adulto()
-{
-    $_SESSION['adulto'] = conect()->list('adulto');
-
-    if(isset($_SESSION['adulto']))
-    {
-        return $_SESSION['adulto'];
-    }
-    return null;
-}
 function exemplo() : string
 {
     $_SESSION['nomes-exemplo'] = conect()->exemple_list();

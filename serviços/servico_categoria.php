@@ -4,7 +4,6 @@ function definir_categoria($idade, $nome, $competidor) : ?string
 {
     if(valida_nomes($nome) and valida_idade($idade))
     {
-        remove_erro();
         if($idade >= 6 and $idade <= 12)
         {
             setar_categoria($nome .' se encontra na categoria infantil');
@@ -26,7 +25,6 @@ function definir_categoria($idade, $nome, $competidor) : ?string
     }
     else
     {
-        remove_categoria();
         return obter_erro();
     }
 }

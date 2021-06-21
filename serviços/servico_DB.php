@@ -45,7 +45,7 @@ class Competidor
 
     public function list($categoria) : ?array
     {
-        $sql = 'select * from '.$categoria;
+        $sql = 'select * from competidor where categoria = \'' . $categoria . '\'';
 
         $competidores = [];
 
@@ -59,17 +59,25 @@ class Competidor
 
     public function insert(string $categoria,string $nome,int $idade) : int
     {
-        $sql = 'insert into '. $categoria .'(nome, idade) values(:nome, :idade)';
+        $sql = 'insert into competidor(nome, idade, categoria) values(:nome, :idade, :categoria)';
         echo $sql;
 
         $prepare = $this->conexao->prepare($sql);
 
         $prepare->bindParam(':nome', $nome);
         $prepare->bindParam(':idade', $idade);
+        $prepare->bindParam(':categoria', $categoria);
 
         $prepare->execute();
 
         return $prepare->rowCount();
+    }
+
+    public function delete(){
+        $sql = 'truncate table competidor';
+        $prepare = $this->conexao->prepare($sql);
+        $prepare->execute();
+        return;
     }
 }
 

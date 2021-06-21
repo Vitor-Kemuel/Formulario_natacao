@@ -9,5 +9,5 @@ include "serviços/servico_categoria.php";
 definir_categoria($idade, $nome, conect());
 
 header("location: index.php");
-
+    
 ?>
