@@ -73,8 +73,15 @@ class Competidor
         return $prepare->rowCount();
     }
 
-    public function delete(){
+    public function delete_todas(){
         $sql = 'truncate table competidor';
+        $prepare = $this->conexao->prepare($sql);
+        $prepare->execute();
+        return;
+    }
+
+    public function delete($categoria){
+        $sql = 'delete from competidor where categoria = \'' . $categoria . '\'';
         $prepare = $this->conexao->prepare($sql);
         $prepare->execute();
         return;

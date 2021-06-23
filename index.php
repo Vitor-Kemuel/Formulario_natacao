@@ -7,6 +7,7 @@ include "serviços/servico_mensagem_sessao.php";
 <head>
     <link rel="stylesheet" href="style/main.css">
     <link rel="stylesheet" href="style/responsive.css">
+    <link rel="stylesheet" href="style/deletar.css">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Formulário de Inscrição</title>
     <meta name="author" content="">
@@ -20,7 +21,8 @@ include "serviços/servico_mensagem_sessao.php";
     <div class="barra_topo">
         <h3 class="logotipo">Natação</h3>
         <nav>
-            <a href="serviços/deletar_dados.php">Deletar competidores</a>
+            <!-- <a href="serviços/deletar_dados.php">Deletar competidores</a> -->
+            <a href="#deletar">Deletar competidores</a>
         </nav>
     </div>
 </header>
@@ -126,6 +128,21 @@ include "serviços/servico_mensagem_sessao.php";
     <?php
     }
     ?>
+</div>
+
+<div id="deletar">
+    <div class="caixa_deletar">
+        <a href="" id="fechar">X</a>
+        <p>Qual classificação<br>deseja apagar?</p><hr>
+        <div class="caixa_botoes_deletar">
+            <form action="serviços/deletar_dados.php" method="post">
+                <input class="botoes_deletar" type="submit" value="infantil" name="infantil" /><br>
+                <input class="botoes_deletar" type="submit" value="adolescente" name="adolescente" /><br>
+                <input class="botoes_deletar" type="submit" value="adulto" name="adulto" /><br>
+                <input class="botoes_deletar" type="submit" value="todas" name="todas" /><br>
+            </form>
+        </div>
+    </div>
 </div>
 
 </body>
